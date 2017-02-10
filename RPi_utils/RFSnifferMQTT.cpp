@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
     
         int value = mySwitch.getReceivedValue();
         
-    	stringstream ss;
+    	sstream ss;
 		ss << "mosquitto_pub -t 433mhz/" << value << " -m CLOSED";
 
 	      system( ss.str() );
