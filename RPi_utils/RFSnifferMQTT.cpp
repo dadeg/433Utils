@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
     
         int value = mySwitch.getReceivedValue();
     
-	      system("mosquitto_pub -t 433mhz/" + value + " -m CLOSED");
+	      system(std::string("mosquitto_pub -t 433mhz/") + std::string(value) + std::string(" -m CLOSED"));
         
     
         mySwitch.resetAvailable();
