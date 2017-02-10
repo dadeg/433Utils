@@ -35,8 +35,10 @@ int main(int argc, char *argv[]) {
     
         int value = mySwitch.getReceivedValue();
         
-
-	      system("mosquitto_pub -t 433mhz/123 -m CLOSED");
+		char numstr[21]; // enough to hold all numbers up to 64-bits
+		sprintf(numstr, "%d", value);
+		
+	    system("mosquitto_pub -t 433mhz/" + numstr + " -m CLOSED");
         
     
         mySwitch.resetAvailable();
