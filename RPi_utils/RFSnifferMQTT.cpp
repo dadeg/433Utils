@@ -35,9 +35,7 @@ int main(int argc, char *argv[]) {
     
         int value = mySwitch.getReceivedValue();
     
-	      system("mosquitto_pub -t 433mhz/%i -m CLOSED", 
-			value 
-	  	  );
+	      system("mosquitto_pub -t 433mhz/" + value + " -m CLOSED");
         
     
         mySwitch.resetAvailable();
