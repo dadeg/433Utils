@@ -2,7 +2,7 @@
 # Defines the RPI variable which is needed by rc-switch/RCSwitch.h
 CXXFLAGS=-DRPI
 
-all: send codesend RFSniffer
+all: send codesend RFSniffer RFSnifferMQTT
 
 send: ../rc-switch/RCSwitch.o send.o
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi

@@ -1,11 +1,7 @@
 /*
   RFSnifferMQTT
 
-  Usage: ./RFSnifferMQTT [<pulseLength>]
-  [] = optional
-
-  Hacked from http://code.google.com/p/rc-switch/
-  by @justy to provide a handy RF code sniffer
+  Usage: ./RFSnifferMQTT
 */
 
 #include "../rc-switch/RCSwitch.h"
@@ -29,11 +25,7 @@ int main(int argc, char *argv[]) {
        return 0;
      }
 
-     int pulseLength = 0;
-     if (argv[1] != NULL) pulseLength = atoi(argv[1]);
-
      mySwitch = RCSwitch();
-     if (pulseLength != 0) mySwitch.setPulseLength(pulseLength);
      mySwitch.enableReceive(PIN);  // Receiver on interrupt 0 => that is pin #2
      
     
@@ -43,17 +35,10 @@ int main(int argc, char *argv[]) {
     
         int value = mySwitch.getReceivedValue();
     
-        if (value == 0) {
-          printf("Unknown encoding\n");
-        } else {    
-   
-          printf("Received value: %i protocol: %i bitlength: %i delay %i\n", 
-		mySwitch.getReceivedValue(),
-		mySwitch.getReceivedProtocol(),
-		mySwitch.getReceivedBitlength(),
-		mySwitch.getReceivedDelay() 
-	  );
-        }
+	      system("mosquitto_pub -t 433mhz/%i -m CLOSED", 
+			value 
+	  	  );
+        
     
         mySwitch.resetAvailable();
     
