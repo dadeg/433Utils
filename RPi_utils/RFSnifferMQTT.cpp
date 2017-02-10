@@ -7,6 +7,7 @@
 #include "../rc-switch/RCSwitch.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <sstream>
      
      
 RCSwitch mySwitch;
@@ -34,8 +35,11 @@ int main(int argc, char *argv[]) {
       if (mySwitch.available()) {
     
         int value = mySwitch.getReceivedValue();
-    
-	      system(std::string("mosquitto_pub -t 433mhz/") + std::string(value) + std::string(" -m CLOSED"));
+        
+    	stringstream ss;
+		ss << "mosquitto_pub -t 433mhz/" << value << " -m CLOSED";
+
+	      system( ss.str() );
         
     
         mySwitch.resetAvailable();
