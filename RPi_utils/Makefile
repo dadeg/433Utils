@@ -13,7 +13,7 @@ codesend: ../rc-switch/RCSwitch.o codesend.o
 RFSniffer: ../rc-switch/RCSwitch.o RFSniffer.o
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi
 	
-RFSnifferMQTT: ../rc-switch/RCSwitch.o RFSniffer.o
+RFSnifferMQTT: ../rc-switch/RCSwitch.o RFSnifferMQTT.o
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi
 	
 
