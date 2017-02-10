@@ -18,5 +18,5 @@ RFSnifferMQTT: ../rc-switch/RCSwitch.o RFSniffer.o
 	
 
 clean:
-	$(RM) ../rc-switch/*.o *.o send codesend servo RFSniffer
+	$(RM) ../rc-switch/*.o *.o send codesend servo RFSniffer RFSnifferMQTT
 
