@@ -13,6 +13,9 @@ codesend: ../rc-switch/RCSwitch.o codesend.o
 RFSniffer: ../rc-switch/RCSwitch.o RFSniffer.o
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi
 	
+RFSnifferMQTT: ../rc-switch/RCSwitch.o RFSniffer.o
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi
+	
 
 clean:
 	$(RM) ../rc-switch/*.o *.o send codesend servo RFSniffer
