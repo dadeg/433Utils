@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
 		sprintf(mqttCommand, "mosquitto_pub -t 433mhz/%d -m CLOSED", value);
 		
 	    system(mqttCommand);
-        printf("executing: " + mqttCommand);
+        printf(mqttCommand);
     
         mySwitch.resetAvailable();
     
