@@ -35,11 +35,11 @@ int main(int argc, char *argv[]) {
     
         int value = mySwitch.getReceivedValue();
         
-		char mqttCommand[50]; // enough to hold all numbers up to 64-bits
-		sprintf(mqttCommand, "mosquitto_pub -t 433mhz/%d -m CLOSED", value);
+		//char mqttCommand[50]; // enough to hold all numbers up to 64-bits
+		//sprintf(mqttCommand, "mosquitto_pub -t 433mhz/%d -m CLOSED", value);
 		
-	    system(mqttCommand);
-        printf(mqttCommand);
+	    //system(mqttCommand);
+        printf(value);
     
         mySwitch.resetAvailable();
     
