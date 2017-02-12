@@ -7,6 +7,8 @@
 #include "../rc-switch/RCSwitch.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string>
+#include <sstream>
      
      
 RCSwitch mySwitch;
@@ -35,10 +37,11 @@ int main(int argc, char *argv[]) {
     
         int value = mySwitch.getReceivedValue();
         
-		char mqttCommand[50]; // enough to hold all numbers up to 64-bits
-		sprintf(mqttCommand, "mosquitto_pub -t 433mhz/%d -m CLOSED", value);
-		string stringCommand = mqttCommand;
-	    system(stringCommand);
+	    std::ostringstream oss;
+		oss << "mosquitto_pub -t 433mhz/" << value << " -m CLOSED";
+		std::string mqttCommand = oss.str();
+	    
+	    system(mqttCommand);
         printf("Received value: %i\n", value);
     
         mySwitch.resetAvailable();
