@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
 		oss << "mosquitto_pub -t 433mhz/" << value << " -m CLOSED";
 		std::string mqttCommand = oss.str();
 	    
-	    system(mqttCommand);
+	    system(mqttCommand.c_str());
         printf("Received value: %i\n", value);
     
         mySwitch.resetAvailable();
